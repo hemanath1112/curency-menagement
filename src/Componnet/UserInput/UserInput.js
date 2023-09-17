@@ -19,7 +19,7 @@ const Main = () => {
 
     const ResetHandling =()=>{
         setUserValue(userValues)
-   
+        console.log("hii")
 
     }
 
