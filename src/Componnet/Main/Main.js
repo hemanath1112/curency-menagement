@@ -1,33 +1,32 @@
 import React, { useState } from 'react'
 
 const userValues ={  
-    "current-savings":1000,
-    "yearly-contribution":255,
-    "expected-returns":43,
-    "duration":10
+    "current-savings":'',
+    "yearly-contribution":'',
+    "expected-returns":'',
+    "duration":''
 }
-const Main = () => {
+
+const Main = (props) => {
 
     const [userValue, setUserValue]= useState(userValues);
 
+
     const submitHandling = (e)=>{
         e.preventDefault()
-        setUserValue("")  
-      
-
-    }
+        props.onCallutaer(userValue);
+     }
 
     const ResetHandling =()=>{
         setUserValue(userValues)
-        console.log("hii")
-
+   
     }
 
     const InputChange = (input, value)=>{
         setUserValue((prevInput)=>{
             return{
                 ...prevInput,
-                [input]:value,
+                [input]: +value,
             }
         })
     }
@@ -64,6 +63,7 @@ const Main = () => {
                     id="expected-return" 
                     value={userValue['expected-returns']}
                     onChange={(e)=>InputChange('expected-returns', e.target.value)}
+    
                 />
             </p>
             <p>
